@@ -87,12 +87,18 @@ exports.getNegocios = (req, res) => {
 }
 exports.removerNegocio = async (req, res) => {
     const email = req.params.correo
+      Negocio.findOneAndDelete({correo:email},(err)=>{
+            if(err){
+              res.json({ mensaje: "Error Al Eliminar Negocio "})
+             }
+              res.json({ mensaje: "Negocio Eliminado "});
+      }
 
-    Negocio.findOneAndDelete( {correo:email} ).then((negocio) => {
-        if (negocio) {
-            return res.json({ mensaje: "Negocio Eliminado ",negocio })
-        } else  {
-            res.json({ mensaje: "Error Al Eliminar Negocio" });
-        }
-    }).catch((error) => console.error('Error al guardar el usuario', error));
+    //Negocio.findOneAndDelete( {correo:email} ).then((negocio) => {
+    //    if (negocio) {
+    //        return res.json({ mensaje: "Negocio Eliminado ",negocio })
+    //    } else  {
+    //        res.json({ mensaje: "Error Al Eliminar Negocio" });
+    //    }
+    //}).catch((error) => console.error('Error al guardar el usuario', error));
 }
