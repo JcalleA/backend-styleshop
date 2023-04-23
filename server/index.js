@@ -8,6 +8,10 @@ const logger = require('morgan');
 const cors = require("cors");
 const renovationToken = require("./controllers/RenovationToken")
 const authToken = require("./auth/auth");
+const debug = require('debug')('server:server');
+const http = require('http');
+var PORT = process.env.PORT || '3001';
+const displayRoutes = require("express-routemap");
 
 
 // database 
@@ -58,7 +62,11 @@ app.use((err, req, res,) => {
     const CODE = 500
     res.status(err.status || CODE);
     res.render('error');
-}); 
+});
 
+app.listen(PORT, () => {
+    displayRoutes(app);
+    console.log(`API RUNNING ON PORT ${PORT}`);
+});
 module.exports = app;
 
