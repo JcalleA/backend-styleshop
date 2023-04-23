@@ -87,7 +87,7 @@ exports.getNegocios = (req, res) => {
 }
 exports.removerNegocio = async (req, res) => {
     const email = req.params.correo
-      Negocio.findOneAndDelete({correo:email},(err)=>{
+      Negocio.findOneAndDelete({correo:email}),(err)=>{
             if(err){
               res.json({ mensaje: "Error Al Eliminar Negocio "})
              }
