@@ -13,7 +13,7 @@ router.post('/registrar', productosController.registrarProducto);
 // //get
 // // router.get('/getUsers', usuarioController.find);
 router.get('/getproductos', productosController.getProductos);
-router.get('/getcategoria', productosController.getCategoria);
+router.get('/getcategoria/:categoria', productosController.getCategoria);
 // //put
 // router.put('/update', negocioController.update);
 
