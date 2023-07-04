@@ -26,9 +26,9 @@ exports.registrarProducto = async (req, res) => {
 exports.getCategoria = async (req, res) => {
     const categoria = req.params.categoria
 
-    Productos.find({ "categoria": categoria }, (err, datos))
-        .then(res.json(datos))
-        .catch(res.json(err))
+    Productos.find({ "categoria": categoria }, (err, datos)=>{
+      res.json(datos)
+    },console.error("error consulta categoria"));
 }
 
 
