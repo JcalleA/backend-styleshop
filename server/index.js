@@ -21,6 +21,7 @@ const usuariosRouter = require('./routes/usuario.router');
 const negociosRouter = require('./routes/negocio.router');
 const adminRouter = require('./routes/admin.router');
 const empleadoRouter = require('./routes/empleadoRouter');
+const productosRouter=require('./routes/productos.router')
 const citasRouter = require('./routes/cita.router');
 const { default: mongoose } = require('mongoose');
 //mongo connection
@@ -45,6 +46,7 @@ app.use('/api/users', usuariosRouter);
 app.use('/api/negocio', negociosRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/empleados', empleadoRouter);
+app.use('/api/producto', productosRouter);
 app.use('/api/cita', citasRouter);
 
 //cath 404 and forward to error handler
