@@ -7,13 +7,13 @@ const { ObjectId } = require('mongodb')
 
 
 exports.registrarProducto = async (req, res) => {
-    const { nombre, categoria, precio, descripcion, img } = req.body;
+    const { nombre, categoria, precio, descripcion, url } = req.body;
 
     const nuevoProducto = new Productos({
         nombre,
         categoria,
         precio,
-        img,
+        url,
         descripcion,
     });
     nuevoProducto.save().then((producto) => {
