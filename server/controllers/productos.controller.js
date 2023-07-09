@@ -26,11 +26,19 @@ exports.registrarProducto = async (req, res) => {
 exports.getCategoria = async (req, res) => {
     const categoria = req.params.categoria
 
-    Productos.find({ "categoria": categoria }, (err, datos)=>{
-      res.json(datos)
-    },console.error("error consulta categoria"));
+    Productos.find({ "categoria": categoria }, (err, datos) => {
+        res.json(datos)
+    }, console.error("error consulta categoria"));
 }
 
+
+
+exports.searchs = (req, res) => {
+    
+    Productos.find({ "nombre": { $regex:  req.params.search, $options: 'i' }},(err,datos)=>{
+        res.json(datos)
+    },)
+}
 
 exports.getProductos = (req, res) => {
     Productos.find((err, productos) => {
@@ -42,9 +50,9 @@ exports.removerProducto = async (req, res) => {
 
     const result = await Productos.deleteOne({ "_id": id });
     if (result.deletedCount === 1) {
-        res.json({mensaje:"Elimiado"});
+        res.json({ mensaje: "Elimiado" });
     } else {
-        res.json({mensaje:"No documents matched the query. Deleted 0 documents."});
+        res.json({ mensaje: "No documents matched the query. Deleted 0 documents." });
     }
 }
     //Negocio.findOneAndDelete( {correo:email} ).then((negocio) => {

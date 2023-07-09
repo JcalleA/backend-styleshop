@@ -14,6 +14,7 @@ router.post('/registrar', productosController.registrarProducto);
 // // router.get('/getUsers', usuarioController.find);
 router.get('/getproductos', productosController.getProductos);
 router.get('/getcategoria/:categoria', productosController.getCategoria);
+router.get('/searchs/:search', productosController.searchs);
 // //put
 // router.put('/update', negocioController.update);
 
